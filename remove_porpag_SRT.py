@@ -6,21 +6,37 @@
 import os
 import datetime
 
-#os.remove()
-#os.rmdir()
-diretorio = os.getcwd()
+home_dir = os.getcwd()
 
-#datetime.
+print(home_dir)
 
-print(diretorio)
+def busca_srt(diretorio):
+    """
+    Faz a busca no diretorio por arquivos .srt, abre e procura a propaganda, e substitui por ""
 
-#print(os.listdir(diretorio))
+    Args:
+        diretorio (path.directory): Pasta do sistema onde será feita a busca por arquivos .srt
+    """
+    for arquivo in os.listdir(diretorio):
+        if os.path.isfile(diretorio + os.sep + arquivo) and arquivo.endswith("srt"):
+            with open(diretorio + os.sep + arquivo) as leitura:
+                linhas = leitura.readlines(150)
+                # print(linhas)
+                # tamanho = 0
+                for item in linhas:
+                    if "OpenSubtitles" or "Anuncie seu produto ou marca aqui" in item:
+                        print("achei")
+                    # tamanho = tamanho + len(linhas)
+                    # print(item)
+                    # print(type(item))
+                    pass
+                # print(tamanho)
+                leitura.close()
+                pass
 
-for f in os.listdir(diretorio):
-    if os.path.isfile(f) & f[-4:].endswith("srt"):
-        #print(f[-4:])
-        with open(f) as fil:
-            print(f)
-            print(fil)
-            print(fil.read(5))
-            print("----------Fim do arquivo ---------")
+    pass
+
+
+for f in os.listdir(home_dir):
+    if os.path.isdir(f):
+        busca_srt(home_dir + os.sep + f)
