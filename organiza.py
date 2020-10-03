@@ -25,7 +25,7 @@ def move_arq(path_diretorio):
                     shutil.move(path_diretorio + os.sep + lst_def, home_dir)
                 except:
                     print("Erro ao copiar arquivo")
-            elif extensao in ("nfo", "jpg", "png", "exe"):
+            elif extensao in ("nfo", "jpg", "png", "exe", "txt"):
                 try:
                     os.remove(lst_for)
                 except:
